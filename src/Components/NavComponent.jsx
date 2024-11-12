@@ -30,6 +30,9 @@ const NavComponent = () => {
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/requeriments">Requeriments</NavLink>
                                 </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/tracking">Tracking</NavLink>
+                                </li>
                             </>
                         )}
                     </ul>
@@ -37,7 +40,7 @@ const NavComponent = () => {
                     {user ? (
                         <>
                             <ul className="navbar-nav">
-                                <li className="nav-item dropdown">
+                            <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {user.displayName}

@@ -10,6 +10,7 @@ const ChatComponent = () => {
     const [isVisible, setIsVisible] = useState(false);
     const { user } = useAuth();
     const textareaRef = useRef(null);
+    const messagesEndRef = useRef(null);
 
     useEffect(() => {
         const messagesRef = ref(database, 'messages');
@@ -17,6 +18,7 @@ const ChatComponent = () => {
             const data = snapshot.val();
             const messagesList = data ? Object.values(data) : [];
             setMessages(messagesList);
+            scrollToBottom();
         });
     }, []);
 
@@ -31,6 +33,7 @@ const ChatComponent = () => {
             push(messagesRef, newMessage);
             setInput('');
             resetTextareaHeight();
+            setTimeout(scrollToBottom, 100); // Ensure scroll updates after state change
         }
     };
 
@@ -59,6 +62,13 @@ const ChatComponent = () => {
 
     const toggleChat = () => {
         setIsVisible(!isVisible);
+        if (!isVisible) {
+            setTimeout(scrollToBottom, 0);
+        }
+    };
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     const formatDate = (dateString) => {
@@ -96,6 +106,7 @@ const ChatComponent = () => {
                             <div className={styles.messageText} style={{ whiteSpace: 'pre-wrap' }}>{msg.text}</div>
                         </div>
                     ))}
+                    <div ref={messagesEndRef} />
                 </div>
                 <div className={styles.chatFooter}>
                     <textarea

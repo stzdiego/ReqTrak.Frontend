@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./RequerimentComponent.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt, faUser, faCalendarAlt, faFlag, faUserTag } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt, faUser, faCalendarAlt, faFlag, faUserTag, faHashtag } from '@fortawesome/free-solid-svg-icons';
 
 const priorityMap = {
     '-1': 'None',
@@ -25,21 +25,21 @@ const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
 };
 
-const RequerimentComponent = ({ id, createdAt, userCreator, subject, description, stage, priority, userAssigned }) => {
-    const handleDetailClick = () => {
-        window.open(`/requeriment/${id}`, '_blank');
-    };
-
+const RequerimentComponent = ({ id, createdAt, userCreator, subject, description, stage, priority, userAssigned, onDetailClick }) => {
     return (
         <div className={`card ${styles.cardReq}`}>
             <div className={styles.verticalContainer}>
-                <button className={`btn btn-outline-primary ${styles.detailButton}`} onClick={handleDetailClick}>
+                <button className={`btn btn-outline-primary ${styles.detailButton}`} onClick={() => onDetailClick(id)}>
                     <FontAwesomeIcon icon={faExternalLinkAlt} />
                 </button>
                 <div className={styles.verticalSeparator}></div>
             </div>
             <div className={styles.content}>
                 <div className={styles.row}>
+                    <div className="input-group me-3 mb-1">
+                        <span className="input-group-text"><FontAwesomeIcon icon={faHashtag} /></span>
+                        <input type="text" className="form-control" placeholder="ID" aria-label="ID" value={id} readOnly />
+                    </div>
                     <div className="input-group me-3 mb-1">
                         <span className="input-group-text"><FontAwesomeIcon icon={faUser} /></span>
                         <input type="text" className="form-control" placeholder="Creator" aria-label="Creator" value={userCreator ? userCreator.name : ''} readOnly />

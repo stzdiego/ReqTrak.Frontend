@@ -1,0 +1,62 @@
+.trackCard {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px; /* Reduced padding */
+    margin-bottom: 5px; /* Reduced margin */
+    transition: all 0.3s;
+    background-color: #ffffff;
+}
+
+.trackCard:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #f1f1f1;
+}
+
+.trackHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px; /* Reduced margin */
+    background-color: var(--bs-primary);
+    color: white;
+    padding: 5px; /* Reduced padding */
+    border-radius: 4px 4px 0 0;
+}
+
+.trackId {
+    font-weight: bold;
+    font-size: 0.9rem; /* Reduced font size */
+}
+
+.trackBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px; /* Reduced gap */
+}
+
+.tableHeader {
+    display: contents;
+    font-weight: bold;
+    border-bottom: 2px solid var(--bs-primary);
+    padding-bottom: 5px;
+    margin-bottom: 5px; /* Reduced margin */
+}
+
+.tableRow {
+    display: contents;
+    transition: background-color 0.3s;
+}
+
+.tableRow:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.2);
+}
+
+.tableRow > div {
+    padding: 5px 0; /* Reduced padding */
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem; /* Reduced font size */
+}

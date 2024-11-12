@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './LoginPage.module.css';
 import logo from '../Images/BrandReqTrak.png';
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useAuth } from '../Helpers/AuthContext';
 import { useNavigate } from "react-router-dom";
@@ -11,15 +11,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { login } = useAuth();
+    const { loginWithEmail, login } = useAuth();
     const provider = new GoogleAuthProvider();
     const navigate = useNavigate();
 
     const handleEmailLogin = async (e) => {
         e.preventDefault();
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            login({ email: userCredential.user.email, displayName: userCredential.user.displayName }); // Update the user state in AuthContext
+            await loginWithEmail(email, password);
             navigate('/');
         } catch (error) {
             console.error(error);
@@ -30,7 +29,7 @@ const LoginPage = () => {
     const handleGoogleLogin = async () => {
         try {
             const userCredential = await signInWithPopup(auth, provider);
-            login({ email: userCredential.user.email, displayName: userCredential.user.displayName }); // Update the user state in AuthContext
+            login({ email: userCredential.user.email, displayName: userCredential.user.displayName });
             navigate('/');
         } catch (error) {
             console.error(error);
