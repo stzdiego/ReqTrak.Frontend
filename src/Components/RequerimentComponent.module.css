@@ -15,10 +15,26 @@
     background-color: #f9f9f9;
 }
 
-.verticalLine {
-    flex: 0 0 3px;
+.verticalContainer {
+    flex: 0 0 auto;
     background-color: #FF914D;
-    margin-right: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    margin: -10px 10px -10px -10px;
+}
+
+    .verticalSeparator {
+    width: 2px;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .content {
@@ -34,12 +50,25 @@
     margin-bottom: 5px;
 }
 
+.detailButton {
+    background-color: transparent;
+    color: white;
+    padding: 3px 6px;
+    font-size: 0.7rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.detailButton:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
 @media (max-width: 768px) {
     .cardReq {
         flex-direction: column;
     }
 
-    .verticalLine {
+    .verticalContainer {
         margin-bottom: 10px;
         margin-right: 0;
     }
