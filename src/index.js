@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import store from './Store/store';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
-import TodoApp from './Components/TodoApp';
 import NavComponent from './Components/NavComponent';
 import { AuthProvider, useAuth } from './Helpers/AuthContext';
 import PrivateRoute from './Helpers/PrivateRoute';
@@ -27,7 +26,6 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/requeriments" element={<PrivateRoute element={<RequerimentsPage />} />} />
-                <Route path="/todos" element={<PrivateRoute element={<TodoApp />} />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/login" element={<LoginPage />} />
             </Routes>
