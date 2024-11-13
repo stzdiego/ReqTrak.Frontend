@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./RequerimentComponent.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt, faUser, faCalendarAlt, faFlag, faUserTag, faHashtag, faEdit, faBook } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt, faUser, faCalendarAlt, faFlag, faUserTag, faHashtag, faEdit, faBook, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const priorityMap = {
@@ -87,7 +87,7 @@ const RequerimentComponent = ({ id, createdAt, updatedAt, userCreator, subject, 
                     <div className="col-md-4 mb-1">
                         <div className="input-group">
                             <OverlayTrigger placement="top" overlay={<Tooltip>Stage</Tooltip>}>
-                                <span className="input-group-text"><FontAwesomeIcon icon={faFlag} /></span>
+                                <span className="input-group-text"><FontAwesomeIcon icon={faLayerGroup} /></span>
                             </OverlayTrigger>
                             <input type="text" className="form-control" placeholder="Stage" aria-label="Stage" value={stageMap[stage]} readOnly />
                         </div>

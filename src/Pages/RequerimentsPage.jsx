@@ -34,7 +34,8 @@ const RequerimentsPage = () => {
         const { name, value } = e.target;
         setFilters((prevFilters) => ({
             ...prevFilters,
-            [name]: name === 'id' ? parseInt(value, 10) || '' : value,
+            [name]: name === 'id' ? parseInt(value, 10) || '' :
+                (name === 'stage' || name === 'priority') ? parseInt(value, 10) : value,
         }));
     };
 
