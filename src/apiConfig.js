@@ -1,5 +1,5 @@
 const apiConfig = {
-    baseUrl: 'http://44.198.212.240:5002'
+    baseUrl: 'https://reqtrackapi.siesadev.com'
 };
 
 export default apiConfig;
