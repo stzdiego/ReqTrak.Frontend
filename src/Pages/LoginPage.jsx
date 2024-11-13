@@ -1,3 +1,4 @@
+// src/Pages/LoginPage.jsx
 import React, { useState } from 'react';
 import styles from './LoginPage.module.css';
 import logo from '../Images/BrandReqTrak.png';
@@ -11,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { loginWithEmail, login } = useAuth();
+    const { loginWithEmail, loginWithGoogle, login } = useAuth();
     const provider = new GoogleAuthProvider();
     const navigate = useNavigate();
 
@@ -29,8 +30,14 @@ const LoginPage = () => {
     const handleGoogleLogin = async () => {
         try {
             const userCredential = await signInWithPopup(auth, provider);
-            login({ email: userCredential.user.email, displayName: userCredential.user.displayName });
+            const { email, displayName } = userCredential.user;
+            await loginWithGoogle(email, displayName);
             navigate('/');
+            if (window.opener) {
+                window.opener.postMessage('close', '*');
+            } else {
+                window.close();
+            }
         } catch (error) {
             console.error(error);
             toast.error("Google login failed. Please try again.");
@@ -50,9 +57,9 @@ const LoginPage = () => {
                                    value={email}
                                    onChange={(e) => setEmail(e.target.value)}
                                    className="form-control"
-                                   id="floatingInputGroup1"
+                                   id="floatingInputGroupEmail"
                                    placeholder="Email" />
-                            <label htmlFor="floatingInputGroup1">Email</label>
+                            <label htmlFor="floatingInputGroupEmail">Email</label>
                         </div>
                     </div>
 
@@ -63,9 +70,9 @@ const LoginPage = () => {
                                    value={password}
                                    onChange={(e) => setPassword(e.target.value)}
                                    className="form-control"
-                                   id="floatingInputGroup1"
+                                   id="floatingInputGroupPassword"
                                    placeholder="Password" />
-                            <label htmlFor="floatingInputGroup1">Password</label>
+                            <label htmlFor="floatingInputGroupPassword">Password</label>
                         </div>
                     </div>
 

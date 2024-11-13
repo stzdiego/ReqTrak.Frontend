@@ -27,7 +27,8 @@ const ChatComponent = () => {
             const messagesRef = ref(database, 'messages');
             const newMessage = {
                 text: input,
-                sender: user.displayName,
+                senderEmail: user.email,
+                senderName: user.displayName,
                 date: new Date().toISOString()
             };
             push(messagesRef, newMessage);
@@ -98,9 +99,9 @@ const ChatComponent = () => {
                 </div>
                 <div className={styles.chatBody}>
                     {messages.map((msg, index) => (
-                        <div key={index} className={`${styles.message} ${msg.sender === user.displayName ? styles.myMessage : styles.otherMessage}`}>
+                        <div key={index} className={`${styles.message} ${msg.senderEmail === user.email ? styles.myMessage : styles.otherMessage}`}>
                             <div className={styles.messageHeader}>
-                                <span className={styles.sender}>{msg.sender}</span>
+                                <span className={styles.sender}>{msg.senderName}</span>
                                 <span className={styles.date}>{formatDate(msg.date)}</span>
                             </div>
                             <div className={styles.messageText} style={{ whiteSpace: 'pre-wrap' }}>{msg.text}</div>

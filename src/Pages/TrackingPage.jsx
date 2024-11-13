@@ -85,7 +85,7 @@ const TrackingPage = () => {
                     <div className={styles.container}>
                         <ul className="p-0">
                             {groupedTracks.length > 0 ? groupedTracks.map((group, index) => (
-                                <TrackComponent key={index} idReq={group.idReq} changes={group.changes} />
+                                <TrackComponent key={index} idReq={Number(group.idReq)} changes={group.changes} />
                             )) : <p>No tracks available</p>}
                         </ul>
                     </div>

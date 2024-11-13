@@ -1,4 +1,35 @@
-.vrPrimary {
+.userOptions {
+    background-color: var(--bs-light);
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.userIcon {
+    margin-right: 5px;
+}
+
+.vrSeparator {
+    margin: 0 10px;
     border-left: 1px solid var(--bs-primary);
-    align-self: stretch;
+    height: 30px;
+}
+
+.navRight {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--bs-dark) !important;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--bs-primary) !important;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }

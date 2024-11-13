@@ -1,3 +1,4 @@
+// src/Hooks/useFetchRequerimentsHook.jsx
 import { useState, useEffect } from 'react';
 
 const useFetchRequerimentsHook = (url, filters) => {
@@ -27,7 +28,15 @@ const useFetchRequerimentsHook = (url, filters) => {
                     throw new Error(`Error fetching data: ${response.status} ${response.statusText} - ${errorText}`);
                 }
                 const result = await response.json();
-                setData(result);
+
+                // Sort the data
+                const sortedData = result.sort((a, b) => {
+                    const dateA = new Date(a.updatedAt || a.createdAt);
+                    const dateB = new Date(b.updatedAt || b.createdAt);
+                    return dateB - dateA;
+                });
+
+                setData(sortedData);
             } catch (err) {
                 setError(err.message);
             } finally {

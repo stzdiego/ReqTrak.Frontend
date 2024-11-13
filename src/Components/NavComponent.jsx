@@ -17,57 +17,52 @@ const NavComponent = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <img src={logo} alt="Logo" width="100" className="d-inline-block align-text-top"/>
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul className="navbar-nav mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/">Home</NavLink>
+                            <NavLink className={`nav-link ${styles.navLink}`} to="/">Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/about">About</NavLink>
+                            <NavLink className={`nav-link ${styles.navLink}`} to="/about">About</NavLink>
                         </li>
-                        {user && (
-                            <>
-                                <div className={`vr ${styles.vrPrimary}`}/>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to="/requeriments">Requeriments</NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to="/tracking">Tracking</NavLink>
-                                </li>
-                            </>
-                        )}
                     </ul>
 
-                    {user ? (
-                        <>
-                            <ul className="navbar-nav">
+                    {user && (
+                        <ul className={`navbar-nav ${styles.navRight}`}>
+                            <li className="nav-item">
+                                <NavLink className={`nav-link ${styles.navLink}`} to="/requeriments">Requeriments</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className={`nav-link ${styles.navLink}`} to="/tracking">Tracking</NavLink>
+                            </li>
+                            <div className={styles.vrSeparator}/>
                             <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {user.displayName}
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item" href="#">Profile</a></li>
-                                        <li>
-                                            <hr className="dropdown-divider"/>
-                                        </li>
-                                        <li>
-                                            <button className="dropdown-item" onClick={logout}>Logout</button>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </>
-                    ) : (
-                        <>
-                            <ul className="navbar-nav">
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to="/login">Login</NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to="/register">Register</NavLink>
-                                </li>
-                            </ul>
-                        </>
+                                <a className={`nav-link dropdown-toggle ${styles.navLink}`} href="#" id="navbarDropdown"
+                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i className={`fas fa-user ${styles.userIcon}`}></i>
+                                    {user.displayName}
+                                </a>
+                                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><NavLink className="dropdown-item" to="/profile">Profile</NavLink></li>
+                                    <li>
+                                        <hr className="dropdown-divider"/>
+                                    </li>
+                                    <li>
+                                        <button className="dropdown-item" onClick={logout}>Logout</button>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    )}
+
+                    {!user && (
+                        <ul className={`navbar-nav ${styles.navRight}`}>
+                            <li className="nav-item">
+                                <NavLink className={`nav-link ${styles.navLink}`} to="/login">Login</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className={`nav-link ${styles.navLink}`} to="/register">Register</NavLink>
+                            </li>
+                        </ul>
                     )}
                 </div>
             </div>

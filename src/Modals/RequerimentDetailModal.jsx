@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form, Spinner } from 'react-bootstrap';
 import useTrackingHook from '../Hooks/useTrackingHook';
 import { useAuth } from '../Helpers/AuthContext';
+import RequerimentHelper from '../Helpers/RequerimentHelper';
 
 const stageMap = {
     '0': 'Pending',
@@ -16,7 +17,7 @@ const RequerimentDetailModal = ({ show, handleClose, requeriment }) => {
     const [newStage, setNewStage] = useState(requeriment.stage);
     const [loading, setLoading] = useState(false);
     const { addTrack } = useTrackingHook({});
-    const { user } = useAuth();
+    const { user, apiUserId } = useAuth();
 
     const handleStageChange = (e) => {
         setNewStage(e.target.value);
@@ -24,16 +25,18 @@ const RequerimentDetailModal = ({ show, handleClose, requeriment }) => {
 
     const handleSave = async () => {
         setLoading(true);
-        const newTrack = {
-            idReq: requeriment.id,
-            user: user.displayName,
-            date: new Date().toISOString(),
-            stage: stageMap[newStage],
-            description: `Stage changed to ${stageMap[newStage]}`
-        };
-        await addTrack(newTrack);
-        setLoading(false);
-        handleClose();
+        try {
+            if (!apiUserId) {
+                throw new Error('API User ID is null');
+            }
+
+            await RequerimentHelper.updateStage(requeriment, newStage, apiUserId, user, addTrack);
+        } catch (error) {
+            console.error('Error updating stage:', error);
+        } finally {
+            setLoading(false);
+            handleClose();
+        }
     };
 
     return (

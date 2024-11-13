@@ -6,6 +6,7 @@ import useFetchRequerimentsHook from "../Hooks/useFetchRequerimentsHook";
 import LoadingComponent from "../Components/LoadingComponent";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSync, faTimes } from '@fortawesome/free-solid-svg-icons';
+import apiConfig from '../apiConfig';
 
 const RequerimentsPage = () => {
     const [filters, setFilters] = useState({
@@ -16,7 +17,7 @@ const RequerimentsPage = () => {
     });
     const [debouncedFilters, setDebouncedFilters] = useState(filters);
     const [selectedRequeriment, setSelectedRequeriment] = useState(null);
-    const endpoint = 'http://localhost:5113/Requeriments/filter';
+    const endpoint = `${apiConfig.baseUrl}/Requeriments/filter`;
     const { data: requeriments, isLoading, error } = useFetchRequerimentsHook(endpoint, debouncedFilters);
 
     useEffect(() => {
