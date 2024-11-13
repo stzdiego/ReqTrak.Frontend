@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 // Import admin-specific pages and components here
 
 const AdminRoutes = () => (
