@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# ReqTrak App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Alcance del Sistema
 
-## Available Scripts
+ReqTrak es una aplicación web desarrollada para facilitar la visualización y el monitoreo en tiempo real de requerimientos de un equipo de desarrollo. La aplicación está dividida en tres capas principales: un frontend desarrollado en React, una API Rest en .NET y una base de datos en PostgreSQL.
 
-In the project directory, you can run:
+### Funcionalidad
 
-### `npm start`
+- Visualización de requerimientos y actualización de etapas.
+- Creación de registros de seguimiento en tiempo real ("Tracking"), permitiendo a los usuarios ver el estado y cambios en cada requerimiento, incluyendo la fecha y usuario que realizó la modificación.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> **Nota**: La aplicación está diseñada para integrarse con un sistema de requerimientos ya existente, por lo que no incluye funcionalidades para la creación de nuevos requerimientos.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tecnologías Utilizadas
 
-### `npm test`
+### Frontend
+- **React**: Librería para la construcción de interfaces de usuario.
+- **NodeJS**: Entorno de ejecución para el desarrollo en JavaScript.
+- **Netlify**: Plataforma de despliegue.
+- **FontAwesome**: Biblioteca de iconos.
+- **GitHub**: Repositorio de código fuente.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
+- **.NET 8**: Framework de desarrollo.
+- **Docker**: Contenerización y despliegue.
+- **EntityFrameworkCore**: ORM para el manejo de la base de datos.
 
-### `npm run build`
+### Base de Datos
+- **PostgreSQL**: Base de datos relacional.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Estructura de Datos Utilizada
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ReqTrak emplea una estructura de datos N-ary Tree para gestionar el historial de cambios en cada requerimiento. La elección de esta estructura se basó en los siguientes aspectos:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Agrupación por Requerimiento**: Cada nodo raíz representa un requerimiento específico (*IdReq*), y sus nodos hijos representan los cambios de etapa o estado, permitiendo una organización clara de los cambios asociados a cada requerimiento.
+2. **Ordenación por Fecha**: Los nodos hijos de cada requerimiento están ordenados cronológicamente, facilitando el acceso al historial de cambios en un orden temporal preciso.
+3. **Flexibilidad**: La estructura permite un número variable de nodos hijos, adaptándose a la cantidad variable de cambios que puede tener cada requerimiento sin restricciones estructurales.
 
-### `npm run eject`
+## Anexos
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Recursos de Diseño
+- **Figma**: [Enlace al diseño en Figma](https://www.figma.com/design/Hjfezlwx82eVEidLmUphag/ReqTrak?node-id=0-1&t=bDDzabADQ3HsCFxb-1)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Repositorios
+- **Frontend**: [GitHub - ReqTrak Frontend](https://github.com/stzdiego/ReqTrak.Frontend)
+- **Backend**: [GitHub - ReqTrak Backend](https://github.com/stzdiego/ReqTracking.Backend)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Despliegue en Producción
+- **Frontend (Netlify)**: [Acceso a la aplicación](https://vocal-croissant-39e524.netlify.app)
+- **Backend (AWS)**: [Documentación Swagger API](https://reqtrackapi.siesadev.com/swagger/index.html)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
