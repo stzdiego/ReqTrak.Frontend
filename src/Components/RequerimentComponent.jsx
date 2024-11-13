@@ -19,7 +19,7 @@ const stageMap = {
     '2': 'Approved',
     '3': 'Planned',
     '4': 'InProgress',
-    '6': 'Done'
+    '5': 'Done'
 };
 
 const formatDate = (dateString) => {

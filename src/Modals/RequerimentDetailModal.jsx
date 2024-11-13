@@ -47,6 +47,7 @@ const RequerimentDetailModal = ({ show, handleClose, requeriment }) => {
             <Modal.Body>
                 <p><strong>ID:</strong> {requeriment.id}</p>
                 <p><strong>Subject:</strong> {requeriment.subject}</p>
+                <p><strong>Description:</strong> {requeriment.description}</p>
                 <p><strong>Current Stage:</strong> {stageMap[requeriment.stage]}</p>
                 <Form.Group controlId="stageSelect">
                     <Form.Label>Change Stage</Form.Label>
