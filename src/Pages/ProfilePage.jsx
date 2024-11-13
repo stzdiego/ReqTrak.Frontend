@@ -8,7 +8,7 @@ import ChangePasswordModal from '../Modals/ChangePasswordModal';
 const ProfilePage = () => {
     const { user, updateProfile } = useAuth();
     const [displayName, setDisplayName] = useState(user?.displayName || '');
-    const [email, setEmail] = useState(user?.email || '');
+    const [email] = useState(user?.email || '');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);

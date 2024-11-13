@@ -36,11 +36,12 @@ const NavComponent = () => {
                             </li>
                             <div className={styles.vrSeparator}/>
                             <li className="nav-item dropdown">
-                                <a className={`nav-link dropdown-toggle ${styles.navLink}`} href="#" id="navbarDropdown"
-                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button className={`nav-link dropdown-toggle ${styles.navLink}`}
+                                        id="navbarDropdown"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i className={`fas fa-user ${styles.userIcon}`}></i>
                                     {user.displayName}
-                                </a>
+                                </button>
                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><NavLink className="dropdown-item" to="/profile">Profile</NavLink></li>
                                     <li>
