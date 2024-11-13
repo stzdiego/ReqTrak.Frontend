@@ -38,7 +38,7 @@ const NavComponent = () => {
                             <li className="nav-item dropdown">
                                 <button className={`nav-link dropdown-toggle ${styles.navLink}`}
                                         id="navbarDropdown"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        data-bs-toggle="dropdown" aria-expanded="false">
                                     <i className={`fas fa-user ${styles.userIcon}`}></i>
                                     {user.displayName}
                                 </button>
